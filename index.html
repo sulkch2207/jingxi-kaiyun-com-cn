@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开云 · 简明指南</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: #f5f7fa;
+      color: #1a1f2b;
+      line-height: 1.6;
+    }
+
+    /* hero — 深色头图 */
+    .hero {
+      background: linear-gradient(145deg, #0e121c 0%, #1b2535 100%);
+      color: #eef2f8;
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background: #f5f7fa;
+      clip-path: ellipse(70% 100% at 50% 100%);
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero h1 span {
+      color: #b6d0f2;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      max-width: 680px;
+      margin: 0 auto 1.2rem;
+      color: #c8d6e8;
+    }
+
+    .hero .tagline {
+      display: inline-block;
+      background: rgba(255,255,255,0.06);
+      padding: 0.6rem 1.6rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #cfdef0;
+    }
+
+    /* 主体区域 — 浅色正文 */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 3.8rem 0 2.8rem;
+    }
+
+    .section-title {
+      font-size: 1.7rem;
+      font-weight: 500;
+      margin-bottom: 1.8rem;
+      letter-spacing: 0.5px;
+      color: #111827;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 48px;
+      height: 3px;
+      background: #5679b3;
+      margin-top: 0.6rem;
+      border-radius: 4px;
+    }
+
+    /* 优势网格 */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 2rem 1.6rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02), 0 0 0 1px rgba(0,0,0,0.02);
+      transition: transform 0.1s ease, box-shadow 0.15s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.02);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+      color: #16202e;
+    }
+
+    .card p {
+      font-size: 0.96rem;
+      color: #3b4252;
+    }
+
+    .card .icon {
+      font-size: 1.7rem;
+      margin-bottom: 0.9rem;
+      display: block;
+    }
+
+    /* 说明区 */
+    .info-block {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      background: #ffffff;
+      padding: 2.6rem 2.8rem;
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      margin-bottom: 0.8rem;
+    }
+
+    .info-text {
+      flex: 2;
+      min-width: 260px;
+    }
+
+    .info-text p {
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+      color: #1f2937;
+    }
+
+    .info-text .highlight {
+      color: #2e5b9e;
+      font-weight: 500;
+    }
+
+    .info-aside {
+      flex: 1;
+      min-width: 180px;
+      background: #f1f4fa;
+      border-radius: 14px;
+      padding: 1.8rem 1.5rem;
+    }
+
+    .info-aside h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #111827;
+    }
+
+    .info-aside ul {
+      list-style: none;
+    }
+
+    .info-aside li {
+      padding: 0.4rem 0;
+      font-size: 0.95rem;
+      color: #2d3748;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .info-aside li::before {
+      content: "—";
+      color: #5679b3;
+      font-weight: 300;
+    }
+
+    /* FAQ 摘要 */
+    .faq-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem 2.5rem;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 1.3rem;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.35rem;
+      color: #0e1724;
+    }
+
+    .faq-item p {
+      font-size: 0.92rem;
+      color: #3b4252;
+    }
+
+    /* 底部链接 */
+    .footer-links {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 3rem 0 2.5rem;
+      margin-top: 1.2rem;
+    }
+
+    .footer-links .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links a {
+      color: #b3cef0;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted rgba(255,255,255,0.15);
+      transition: color 0.1s, border-color 0.1s;
+    }
+
+    .footer-links a:hover {
+      color: #d6e6ff;
+      border-bottom-color: #8fb5e6;
+    }
+
+    .footer-links .copy {
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+
+    .footer-links .link-group {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* 响应式 */
+    @media (max-width: 860px) {
+      .hero h1 { font-size: 2rem; }
+      .hero { padding: 4rem 1.5rem 3.8rem; }
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+      .faq-list { grid-template-columns: 1fr; }
+      .info-block { padding: 2rem 1.5rem; }
+    }
+
+    @media (max-width: 560px) {
+      .grid-3 { grid-template-columns: 1fr; }
+      .info-block { flex-direction: column; }
+      .footer-links .container { flex-direction: column; gap: 1rem; align-items: flex-start; }
+      .hero h1 { font-size: 1.7rem; }
+      .section-title { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- hero 区 -->
+  <header class="hero">
+    <h1><span>开云</span> · 简明访问指南</h1>
+    <p>面向日常使用的轻量说明，快速了解平台特点与访问要点。无需绕路，直接获取你需要的信息。</p>
+    <div class="tagline">稳定 ｜ 清晰 ｜ 一步到位</div>
+  </header>
+
+  <!-- 优势区 -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">为什么选择开云</h2>
+      <div class="grid-3">
+        <div class="card">
+          <span class="icon">⚙️</span>
+          <h3>结构直观</h3>
+          <p>页面布局经过梳理，常用入口与资源分类清晰，减少无意义的跳转层级。</p>
+        </div>
+        <div class="card">
+          <span class="icon">🔒</span>
+          <h3>访问提醒</h3>
+          <p>建议使用主流浏览器并保持网络环境稳定，部分功能依赖安全连接与 cookie 启用。</p>
+        </div>
+        <div class="card">
+          <span class="icon">📋</span>
+          <h3>低认知成本</h3>
+          <p>不追求花哨交互，专注于可读性与效率，新手也能在几分钟内掌握基本操作。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 说明区 + 简明指南 -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">基础说明 & 访问提示</h2>
+      <div class="info-block">
+        <div class="info-text">
+          <p><span class="highlight">开云</span> 是一个面向信息获取与轻量互动的平台，页面强调内容密度与响应速度。本页为你整理了几条最常用的使用原则：</p>
+          <p><strong>1. 域名核对</strong> — 始终确认你正在访问的地址为 <span class="highlight">jingxi-kaiyun.com.cn</span>，避免因相似域名造成混淆。如需直接前往，可点击 <a href="https://jingxi-kaiyun.com.cn" style="color:#2e5b9e; font-weight:500; text-decoration:underline;">开云</a> 进入主站。</p>
+          <p><strong>2. 账户与安全</strong> — 登录时建议使用强密码并开启二次验证（如平台支持）。不要在公共设备上保存登录状态。</p>
+          <p><strong>3. 内容刷新</strong> — 部分板块存在缓存机制，若发现信息未更新可尝试强制刷新或清除浏览器缓存。</p>
+        </div>
+        <div class="info-aside">
+          <h4>快速备忘</h4>
+          <ul>
+            <li>推荐浏览器：Chrome / Edge / Safari 最新版</li>
+            <li>关闭广告拦截插件可提升部分页面兼容性</li>
+            <li>移动端适配良好，横屏体验更佳</li>
+            <li>遇到加载问题先检查网络与 DNS</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ 摘要 -->
+  <section style="padding-top: 1.2rem;">
+    <div class="container">
+      <h2 class="section-title">常见疑问 · 摘要</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <strong>是否需要注册才能浏览全部内容？</strong>
+          <p>大部分公开板块无需登录。少数个性化功能或资源下载可能需要账户认证，具体以页面提示为准。</p>
+        </div>
+        <div class="faq-item">
+          <strong>页面偶尔显示异常怎么办？</strong>
+          <p>先尝试刷新，或切换至无痕模式。如果问题持续，检查是否启用了过严的内容拦截规则。</p>
+        </div>
+        <div class="faq-item">
+          <strong>移动端与桌面端的区别？</strong>
+          <p>核心功能一致，移动端针对触控优化了按钮尺寸与间距，但复杂信息表格建议在桌面端查看。</p>
+        </div>
+        <div class="faq-item">
+          <strong>如何快速定位所需功能？</strong>
+          <p>站内搜索（如有）或导航菜单均按类别组织。开云的首页结构遵循「总览 → 分类 → 详细」的层级。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部链接 -->
+  <footer class="footer-links">
+    <div class="container">
+      <div class="link-group">
+        <a href="https://jingxi-kaiyun.com.cn">开云</a>
+        <a href="#" style="pointer-events:none; opacity:0.7; border-bottom:none;">使用说明</a>
+        <a href="#" style="pointer-events:none; opacity:0.7; border-bottom:none;">环境要求</a>
+      </div>
+      <div class="copy">简明指南 · 仅供参考</div>
+    </div>
+  </footer>
+
+</body>
+</html>

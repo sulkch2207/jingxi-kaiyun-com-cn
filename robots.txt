@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sulkch2207.github.io/jingxi-kaiyun-com-cn/sitemap.xml
